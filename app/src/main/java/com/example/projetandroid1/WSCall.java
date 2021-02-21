@@ -38,7 +38,7 @@ public class WSCall {
                     URL url = new URL(wsUrl);
                     HttpsURLConnection httpURLConnection = (HttpsURLConnection) url.openConnection();
                     httpURLConnection.connect();
-                    httpURLConnection.setConnectTimeout(20000);
+                    httpURLConnection.setConnectTimeout(50000);
                     httpURLConnection.setDefaultUseCaches(false);
                     inputStream = httpURLConnection.getInputStream();
                     postRun(convertStreamToString(inputStream));

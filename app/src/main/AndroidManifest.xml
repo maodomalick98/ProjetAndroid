@@ -3,6 +3,7 @@
     package="com.example.projetandroid1">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetAndroid1">
-        <activity android:name=".CategorieAdapter"></activity>
+        <activity android:name=".Boisson" />
+        <activity android:name=".Fromage" />
+        <activity android:name=".Surgeles" />
+        <activity android:name=".Sauces" />
+        <activity android:name=".CategorieAdapter" />
         <activity android:name=".StudentsInfo" />
         <activity android:name=".Categories" />
         <activity android:name=".StudentsActivity" />

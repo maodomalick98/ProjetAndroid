@@ -15,26 +15,26 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Categories extends EpsiActivity {
+public class Boisson extends EpsiActivity {
 
-    String wsUrl="https://djemam.com/epsi/categories.json";
-    ArrayList<CategoriesData> students;
-    CategorieAdapter studentAdapter;
+    String wsUrl="https://djemam.com/epsi/boissons.json";
+    ArrayList<Students> students;
+    StudentAdapter studentAdapter;
     RecyclerView recyclerView;
     public static void displayActivity(EpsiActivity activity){
-        Intent intent = new Intent(activity, Categories.class);
+        Intent intent = new Intent(activity, Boisson.class);
         activity.startActivity(intent);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categorie_adapter);
-        setTitle("Rayons");
+        setContentView(R.layout.activity_students);
+        setTitle("Boissons");
         showBack();
         recyclerView=findViewById(R.id.recyclerView);
         students = new ArrayList<>();
-        studentAdapter= new CategorieAdapter(this,students);
+        studentAdapter= new StudentAdapter(this,students);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(studentAdapter);
         WSCall wsCall= new WSCall(wsUrl, new WSCall.Callback() {
@@ -44,8 +44,8 @@ public class Categories extends EpsiActivity {
                     JSONObject jsonObject=new JSONObject(result);
                     JSONArray jsonItems=jsonObject.getJSONArray("items");
                     for (int i=0;i<jsonItems.length();i++){
-                        CategoriesData student= null;
-                        student = new CategoriesData(jsonItems.getJSONObject(i));
+                        Students student= null;
+                        student = new Students(jsonItems.getJSONObject(i));
                         students.add(student);
                     }
                     studentAdapter.notifyDataSetChanged();
@@ -56,7 +56,7 @@ public class Categories extends EpsiActivity {
 
             @Override
             public void onError(Exception e) {
-                Toast.makeText(Categories.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(Boisson.this,e.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
         wsCall.run();
