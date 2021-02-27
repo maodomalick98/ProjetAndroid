@@ -42,8 +42,7 @@ public class BoissonAdapter extends RecyclerView.Adapter<BoissonAdapter.ViewHold
         holder.getLayoutCell().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // StudentsInfo.displayActivity(activity,student.getUrl(),student.getName(), student.getEmail(), student.getName2()
-                   //     , student.getGroupe());
+                ProduitsInfo.displayActivity(activity,boisson.getName(),boisson.getPict(),boisson.getDes());
             }
         });
     }

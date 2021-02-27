@@ -29,7 +29,6 @@ public class StudentsActivity extends EpsiActivity {
         setTitle("Infos");
         showBack();
         recyclerView=findViewById(R.id.recyclerView);
-
         students = new ArrayList<>();
         try {
 
@@ -41,6 +40,7 @@ public class StudentsActivity extends EpsiActivity {
             }
 
             studentAdapter= new StudentAdapter(this,students);
+
 
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(studentAdapter);
