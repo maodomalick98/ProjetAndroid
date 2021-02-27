@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Surgeles extends EpsiActivity {
 
-    String wsUrl="https://djemam.com/epsi/surgeles.json";
+    String wsUrl="https://djemam.com/epsi/frozen.json";
     ArrayList<BoissonsData> students;
     BoissonAdapter studentAdapter;
     RecyclerView recyclerView;

@@ -39,10 +39,11 @@ public class CategorieAdapter extends RecyclerView.Adapter<CategorieAdapter.View
         holder.getLayoutCell().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if(student.getTitle().equals("Boissons")){Boisson.displayActivity(activity);}
+                   if(student.getTitle().equals("Boissons")){Boisson.displayActivity(activity);}
                 if(student.getTitle().equals("Fromages")){Fromage.displayActivity(activity);}
                 if(student.getTitle().equals("Sauces")){Sauces.displayActivity(activity);}
                 if(student.getTitle().equals("Surgelés")){Surgeles.displayActivity(activity);}
+
             }
         });
     }

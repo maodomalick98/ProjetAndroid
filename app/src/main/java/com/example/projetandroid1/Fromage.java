@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class Fromage extends EpsiActivity {
 
-    String wsUrl="https://djemam.com/epsi/fromages.json";
+    String wsUrl="https://djemam.com/epsi/fromage.json";
     ArrayList<BoissonsData> students;
     BoissonAdapter studentAdapter;
     RecyclerView recyclerView;

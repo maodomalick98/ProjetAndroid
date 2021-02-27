@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class Boisson extends EpsiActivity {
 
-    String wsUrl="https://djemam.com/epsi/boissons.json";
-    ArrayList<Students> students;
-    StudentAdapter studentAdapter;
+    String wsUrl="https://djemam.com/epsi/drink.json";
+    ArrayList<BoissonsData> students;
+    BoissonAdapter studentAdapter;
     RecyclerView recyclerView;
     public static void displayActivity(EpsiActivity activity){
         Intent intent = new Intent(activity, Boisson.class);
@@ -29,12 +29,12 @@ public class Boisson extends EpsiActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_students);
+        setContentView(R.layout.activity_boisson);
         setTitle("Boissons");
         showBack();
         recyclerView=findViewById(R.id.recyclerView);
         students = new ArrayList<>();
-        studentAdapter= new StudentAdapter(this,students);
+        studentAdapter= new BoissonAdapter(this,students);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(studentAdapter);
         WSCall wsCall= new WSCall(wsUrl, new WSCall.Callback() {
@@ -44,8 +44,8 @@ public class Boisson extends EpsiActivity {
                     JSONObject jsonObject=new JSONObject(result);
                     JSONArray jsonItems=jsonObject.getJSONArray("items");
                     for (int i=0;i<jsonItems.length();i++){
-                        Students student= null;
-                        student = new Students(jsonItems.getJSONObject(i));
+                        BoissonsData student= null;
+                        student = new BoissonsData(jsonItems.getJSONObject(i));
                         students.add(student);
                     }
                     studentAdapter.notifyDataSetChanged();
