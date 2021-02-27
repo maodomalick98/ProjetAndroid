@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetAndroid1">
+        <activity android:name=".ProduitsInfo"></activity>
         <activity android:name=".Boisson" />
         <activity android:name=".Fromage" />
         <activity android:name=".Surgeles" />
