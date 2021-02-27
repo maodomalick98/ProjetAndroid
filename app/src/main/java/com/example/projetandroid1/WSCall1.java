@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class WSCall {
+public class WSCall1 {
     public interface Callback {
         void onComplete(String result);
         void onError(Exception e);
@@ -24,7 +24,7 @@ public class WSCall {
     private  Callback callback;
     private String wsUrl;
 
-    public WSCall(String wsUrl, Callback callback){
+    public WSCall1(String wsUrl, Callback callback){
         this.wsUrl=wsUrl;
         this.callback=callback;
     }

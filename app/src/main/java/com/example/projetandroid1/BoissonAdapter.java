@@ -1,5 +1,6 @@
 package com.example.projetandroid1;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,55 +14,58 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class CategorieAdapter extends RecyclerView.Adapter<CategorieAdapter.ViewHolder>{
+public class BoissonAdapter extends RecyclerView.Adapter<BoissonAdapter.ViewHolder>{
 
-    private ArrayList<CategoriesData> students;
+    private ArrayList<BoissonsData> boissons;
     private EpsiActivity activity;
 
-    public CategorieAdapter(EpsiActivity activity, ArrayList<CategoriesData> students){
+    public BoissonAdapter(EpsiActivity activity, ArrayList<BoissonsData> bois){
         this.activity=activity;
-        this.students=students;
+        this.boissons=bois;
     }
 
     @NonNull
     @Override
-    public CategorieAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    public BoissonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.cell_student, viewGroup, false);
-        return new CategorieAdapter.ViewHolder(view);
+                .inflate(R.layout.cell_produits, viewGroup, false);
+        return new BoissonAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategorieAdapter.ViewHolder holder, int position) {
-        CategoriesData student=students.get(position);
-        holder.getTextViewName().setText(student.getTitle());
+    public void onBindViewHolder(@NonNull BoissonAdapter.ViewHolder holder, int position) {
+        BoissonsData boisson = boissons.get(position);
+        holder.getTextViewName().setText(boisson.getName());
+        holder.getViewDes().setText(boisson.getDes().substring(0,30));
+        Picasso.get().load(boisson.getPict()).into(holder.getImage());
         holder.getLayoutCell().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   if(student.getTitle().equals("Boissons")){Boisson.displayActivity(activity);}
-                if(student.getTitle().equals("Fromages")){Fromage.displayActivity(activity);}
-                if(student.getTitle().equals("Sauces")){Sauces.displayActivity(activity);}
-                if(student.getTitle().equals("Surgelés")){Surgeles.displayActivity(activity);}
-
+               // StudentsInfo.displayActivity(activity,student.getUrl(),student.getName(), student.getEmail(), student.getName2()
+                   //     , student.getGroupe());
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return students.size();
+        return boissons.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewName;
         private final View layoutCell;
+        private final TextView description;
+        private final ImageView image;
 
         public ViewHolder(View view) {
             super(view);
             // Define click listener for the ViewHolder's View
             textViewName = view.findViewById(R.id.textViewName);
             layoutCell = view.findViewById(R.id.layoutCell);
+            description = view.findViewById(R.id.textViewDescription);
+            image = view.findViewById(R.id.imageViewProduit);
         }
 
         public View getLayoutCell() {
@@ -70,5 +74,7 @@ public class CategorieAdapter extends RecyclerView.Adapter<CategorieAdapter.View
         public TextView getTextViewName() {
             return textViewName;
         }
+        public TextView getViewDes() {return description;}
+        public ImageView getImage() {return image;}
     }
 }
